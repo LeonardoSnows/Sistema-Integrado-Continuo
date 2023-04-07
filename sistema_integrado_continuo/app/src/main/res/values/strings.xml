@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Sistema integrado continuo</string>
-    <string name="textview">Seja bem vindo</string>
+    <string name="textview">Login</string>
+    <string name="labelCadastro">Cadastro</string>
+    <string name="welcome">Bem Vindo(a)!!</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnCadastro">Cadastrar</string>
+    <string name="btnTelaLogin">Cadastrar</string>
 </resources>

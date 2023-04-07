@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1096744908025",
-    "project_id": "projeto-ordem-de-servico-fa16c",
-    "storage_bucket": "projeto-ordem-de-servico-fa16c.appspot.com"
+    "project_number": "177405381235",
+    "project_id": "sicdesire-415be",
+    "storage_bucket": "sicdesire-415be.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1096744908025:android:1815c67ca28753ae205e28",
+        "mobilesdk_app_id": "1:177405381235:android:faef6e0457c1de9d853806",
         "android_client_info": {
           "package_name": "br.com.fatec.projeto.sistemaintegradocontinuo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1096744908025-10ebl4qj3r67f6h1k28qjjnm5s9vf16j.apps.googleusercontent.com",
+          "client_id": "177405381235-ru7620qset87onnlkp31n3b5ipqaa44j.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDOzGlJm6AlF50k9rbPzjOH1JKNs9rrGQU"
+          "current_key": "AIzaSyBnAoE4GEii-xkcP-iVoYYUq1ek2SDPW_U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1096744908025-10ebl4qj3r67f6h1k28qjjnm5s9vf16j.apps.googleusercontent.com",
+              "client_id": "177405381235-ru7620qset87onnlkp31n3b5ipqaa44j.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
