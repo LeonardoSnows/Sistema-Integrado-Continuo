@@ -12,13 +12,20 @@
         android:theme="@style/Theme.SistemaIntegradoContinuo"
         tools:targetApi="31">
         <activity
+            android:name=".comentarios.Chat"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".cadastro.Cadastro_User"
             android:exported="false" />
         <activity
             android:name=".formlogin.FormLogin"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".paginaCarregamento.pagina_carregamento"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
