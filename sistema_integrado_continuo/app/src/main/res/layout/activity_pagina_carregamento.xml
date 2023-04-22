@@ -4,15 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/teal_700"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".paginaCarregamento.pagina_carregamento">
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="SISTEMA INTEGRADO CONTINUO"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
