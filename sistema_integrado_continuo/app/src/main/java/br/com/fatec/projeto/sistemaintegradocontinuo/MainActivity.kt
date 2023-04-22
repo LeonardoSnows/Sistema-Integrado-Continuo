@@ -4,17 +4,29 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_User
 import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.delay
 
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportActionBar?.hide()
+        window.statusBarColor = Color.parseColor("#134254")
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, FormLogin::class.java)
+            startActivity(intent)
+            finish()
+        },3000)
 
         val btnLogin = findViewById<Button>(R.id.btn_login)
         val btnSignIn = findViewById<Button>(R.id.btn_sign_in)
