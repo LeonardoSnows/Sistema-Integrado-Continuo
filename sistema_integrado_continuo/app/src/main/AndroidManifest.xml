@@ -14,11 +14,9 @@
         <activity
             android:name=".comentarios.Chat"
             android:exported="false" />
+
         <activity
-            android:name=".comentarios.chat"
-            android:exported="false" />
-        <activity
-            android:name=".paginaCarregamento.pagina_carregamento"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".cadastro.Cadastro_User"
@@ -27,7 +25,7 @@
             android:name=".formlogin.FormLogin"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".paginaCarregamento.pagina_carregamento"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
