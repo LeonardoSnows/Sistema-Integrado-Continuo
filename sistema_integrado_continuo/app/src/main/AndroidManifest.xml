@@ -12,7 +12,7 @@
         android:theme="@style/Theme.SistemaIntegradoContinuo"
         tools:targetApi="31">
         <activity
-            android:name=".comentarios.Chat"
+            android:name=".comentarios.ChatActivity"
             android:exported="false" />
 
         <activity

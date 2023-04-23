@@ -6,8 +6,7 @@ import android.os.Handler
 import android.content.Intent
 import br.com.fatec.projeto.sistemaintegradocontinuo.MainActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
-import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_User
-import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
+import br.com.fatec.projeto.sistemaintegradocontinuo.comentarios.ChatActivity
 
 
 class pagina_carregamento : AppCompatActivity() {
