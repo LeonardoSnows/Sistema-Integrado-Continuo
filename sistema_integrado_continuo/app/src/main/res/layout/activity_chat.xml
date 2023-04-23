@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".comentarios.Chat">
+    tools:context=".comentarios.ChatActivity">
 
     <!-- Título -->
     <TextView
@@ -23,20 +23,23 @@
     <!-- Lista de Comentários -->
 
     <!-- Formulário de Comentário -->
+
     <ListView
         android:id="@+id/listComments"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/teal_700"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="0.5dp"
+        android:cacheColorHint="#FFFFFF"
+        android:divider="@color/white"
+        android:dividerHeight="1.5dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/llCommentForm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <LinearLayout
         android:id="@+id/llCommentForm"

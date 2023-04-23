@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.MainActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_User
+import br.com.fatec.projeto.sistemaintegradocontinuo.mainMenu.MainMenu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -94,7 +95,6 @@ class FormLogin : AppCompatActivity() {
     }
 
     private fun signInUser(email: String, senha: String, view: View) {
-
         auth.signInWithEmailAndPassword(email, senha)
             .addOnCompleteListener { autenticacao ->
                 if (autenticacao.isSuccessful) {
@@ -103,7 +103,7 @@ class FormLogin : AppCompatActivity() {
                     snackbar.setBackgroundTint(Color.BLUE)
                     snackbar.show()
 
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, MainMenu::class.java))
                 }
             }.addOnFailureListener {
                 val snackbar =

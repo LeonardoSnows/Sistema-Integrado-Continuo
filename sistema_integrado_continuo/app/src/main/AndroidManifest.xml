@@ -6,15 +6,27 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SistemaIntegradoContinuo"
         tools:targetApi="31">
         <activity
-            android:name=".comentarios.Chat"
+<<<<<<< HEAD
+            android:name=".mainMenu.MainMenu"
             android:exported="false" />
-
+        <activity
+            android:name=".cadastro.Cadastro_Empresa"
+            android:exported="false" />
+        <activity
+            android:name=".cadastro.Cadastro_Cep_Empresa"
+            android:exported="false" />
+        <activity
+            android:name=".comentarios.Chat"
+=======
+            android:name=".comentarios.ChatActivity"
+>>>>>>> 9f554ba898927e64bff79078827b8704d907f47c
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
