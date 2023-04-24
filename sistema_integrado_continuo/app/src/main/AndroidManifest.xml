@@ -12,7 +12,6 @@
         android:theme="@style/Theme.SistemaIntegradoContinuo"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".mainMenu.MainMenu"
             android:exported="false" />
         <activity
@@ -22,11 +21,7 @@
             android:name=".cadastro.Cadastro_Cep_Empresa"
             android:exported="false" />
         <activity
-            android:name=".comentarios.Chat"
-=======
-            android:name=".comentarios.ChatActivity"
->>>>>>> 9f554ba898927e64bff79078827b8704d907f47c
-            android:exported="false" />
+            android:name=".comentarios.ChatActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
