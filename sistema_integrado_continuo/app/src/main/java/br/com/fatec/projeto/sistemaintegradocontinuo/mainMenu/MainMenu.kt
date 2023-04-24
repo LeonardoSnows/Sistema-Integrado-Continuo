@@ -9,7 +9,7 @@ import android.widget.Button
 import br.com.fatec.projeto.sistemaintegradocontinuo.MainActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_Empresa
-import br.com.fatec.projeto.sistemaintegradocontinuo.comentarios.Chat
+import br.com.fatec.projeto.sistemaintegradocontinuo.comentarios.ChatActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +24,7 @@ class MainMenu : AppCompatActivity() {
         val btnIni = findViewById<Button>(R.id.btnIni)
 
         btnPageChat.setOnClickListener {
-            carregaTela(Intent(this, Chat::class.java))
+            carregaTela(Intent(this, ChatActivity::class.java))
         }
 
         btnRegEmpresa.setOnClickListener {

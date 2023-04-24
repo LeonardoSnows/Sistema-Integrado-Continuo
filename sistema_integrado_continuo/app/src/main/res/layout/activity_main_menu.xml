@@ -92,7 +92,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#0E64D2"
                 android:fontFamily="@font/archivo"
-                android:text="Status da Empresa"
+                android:text="Status da OS"
                 android:textColor="@color/white" />
         </LinearLayout>
 

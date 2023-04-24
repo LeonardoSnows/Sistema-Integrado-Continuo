@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
-import br.com.fatec.projeto.sistemaintegradocontinuo.comentarios.Chat
+import br.com.fatec.projeto.sistemaintegradocontinuo.comentarios.ChatActivity
 
 class Cadastro_Empresa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
