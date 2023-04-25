@@ -94,7 +94,7 @@
             app:boxBackgroundColor="#f3f3f3">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/address_empresa_material_text"
+                android:id="@+id/titulo_ordem_servicotext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Endereço"
@@ -118,7 +118,7 @@
                 app:boxBackgroundColor="#f3f3f3">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/hood_empresa_material_text"
+                    android:id="@+id/descricao_ordem_de_sercico_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Bairro"
