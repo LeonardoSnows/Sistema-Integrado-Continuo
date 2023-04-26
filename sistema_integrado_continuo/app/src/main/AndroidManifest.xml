@@ -12,6 +12,9 @@
         android:theme="@style/Theme.SistemaIntegradoContinuo"
         tools:targetApi="31">
         <activity
+            android:name=".cadastro.Cadastro_Ordem_De_Servico"
+            android:exported="false" />
+        <activity
             android:name=".mainMenu.MainMenu"
             android:exported="false" />
         <activity
@@ -20,8 +23,7 @@
         <activity
             android:name=".cadastro.Cadastro_Cep_Empresa"
             android:exported="false" />
-        <activity
-            android:name=".comentarios.ChatActivity" />
+        <activity android:name=".comentarios.ChatActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

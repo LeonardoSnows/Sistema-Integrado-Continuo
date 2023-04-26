@@ -9,6 +9,7 @@ import android.widget.Button
 import br.com.fatec.projeto.sistemaintegradocontinuo.MainActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_Empresa
+import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_Ordem_De_Servico
 import br.com.fatec.projeto.sistemaintegradocontinuo.comentarios.ChatActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
 import com.google.android.material.snackbar.Snackbar
@@ -22,6 +23,7 @@ class MainMenu : AppCompatActivity() {
         val btnPageChat = findViewById<Button>(R.id.btnPageChat)
         val btnRegEmpresa = findViewById<Button>(R.id.btnRegEmpresa)
         val btnIni = findViewById<Button>(R.id.btnIni)
+        val btnRegService = findViewById<Button>(R.id.btnRegService)
 
         btnPageChat.setOnClickListener {
             carregaTela(Intent(this, ChatActivity::class.java))
@@ -29,6 +31,10 @@ class MainMenu : AppCompatActivity() {
 
         btnRegEmpresa.setOnClickListener {
             carregaTela(Intent(this, Cadastro_Empresa::class.java))
+        }
+
+        btnRegService.setOnClickListener {
+            carregaTela(Intent(this, Cadastro_Ordem_De_Servico::class.java))
         }
 
         btnIni.setOnClickListener { view ->

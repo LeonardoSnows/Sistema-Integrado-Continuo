@@ -26,6 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -135,15 +136,16 @@
 
 
     <Button
-        android:id="@+id/btn_cadastro_user"
+        android:id="@+id/btn_cadastro2_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#0E64D2"
         android:fontFamily="@font/archivo"
         android:text="Cadastrar Ordem de Serviço"
         android:textColor="@color/white"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="594dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
