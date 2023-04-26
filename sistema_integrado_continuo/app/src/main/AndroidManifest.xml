@@ -15,6 +15,11 @@
             android:name=".cadastro.Cadastro_Ordem_De_Servico"
             android:exported="false" />
         <activity
+            android:name=".status.status"
+            android:exported="false"
+            android:label="@string/title_activity_status"
+            android:theme="@style/Theme.SistemaIntegradoContinuo" />
+        <activity
             android:name=".mainMenu.MainMenu"
             android:exported="false" />
         <activity

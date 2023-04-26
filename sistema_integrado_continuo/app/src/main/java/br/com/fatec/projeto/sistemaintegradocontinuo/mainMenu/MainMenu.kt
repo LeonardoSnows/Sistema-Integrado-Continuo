@@ -12,6 +12,7 @@ import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_Empresa
 import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_Ordem_De_Servico
 import br.com.fatec.projeto.sistemaintegradocontinuo.comentarios.ChatActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
+import br.com.fatec.projeto.sistemaintegradocontinuo.status.status
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -24,6 +25,7 @@ class MainMenu : AppCompatActivity() {
         val btnRegEmpresa = findViewById<Button>(R.id.btnRegEmpresa)
         val btnIni = findViewById<Button>(R.id.btnIni)
         val btnRegService = findViewById<Button>(R.id.btnRegService)
+        val btnStatus = findViewById<Button>(R.id.btnStatusEmpresa)
 
         btnPageChat.setOnClickListener {
             carregaTela(Intent(this, ChatActivity::class.java))
@@ -40,6 +42,10 @@ class MainMenu : AppCompatActivity() {
         btnIni.setOnClickListener { view ->
             signOutUser(view)
             carregaTela(Intent(this, MainActivity::class.java))
+        }
+
+        btnStatus.setOnClickListener{ view ->
+            carregaTela(Intent(this, status::class.java))
         }
 
 
