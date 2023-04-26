@@ -69,7 +69,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnServiceOrder"
+                android:id="@+id/btnRegService"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -78,7 +78,7 @@
                 android:layout_marginBottom="10sp"
                 android:backgroundTint="#0E64D2"
                 android:fontFamily="@font/archivo"
-                android:text="Ordem de Serviço"
+                android:text="Registro do Serviço"
                 android:textColor="@color/white" />
 
             <Button
@@ -100,19 +100,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnRegService"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10sp"
-                android:backgroundTint="#0E64D2"
-                android:fontFamily="@font/archivo"
-                android:text="Registro do Serviço"
-                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/btnIni"
