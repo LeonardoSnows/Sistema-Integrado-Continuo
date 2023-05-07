@@ -17,6 +17,5 @@
         tools:context=".fragments.bottomMenu.HomeFragment">
 
 
-
     </RelativeLayout>
 </ScrollView>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_Empresa
 import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_User
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val btnSignIn = findViewById<Button>(R.id.btn_sign_in)
         val btnSignInCompany = findViewById<Button>(R.id.btn_sign_in_company)
         val btnSignOut = findViewById<Button>(R.id.btn_sign_out_user)
+
 
         btnLogin.setOnClickListener {
             carregaTela(Intent(this, FormLogin::class.java))
