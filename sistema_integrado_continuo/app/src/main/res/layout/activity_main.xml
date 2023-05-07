@@ -18,10 +18,11 @@
         android:textColor="#ffff"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintEnd_toEndOf="@id/imageView"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.407" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -49,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_btn_intro"
-            android:text="Login"
+            android:text="@string/login"
             android:textColor="#ffff"
             android:textSize="19sp"
             android:layout_marginBottom="10sp" />
@@ -59,11 +60,22 @@
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
             android:background="@drawable/background_btn_intro2"
-            android:text="Cadastrar"
+            android:text="@string/cadastro_de_cliente"
             android:textColor="#ffff"
-            android:textSize="19sp"
-            android:layout_marginBottom="10sp"/>
+            android:textSize="19sp" />
+
+        <Button
+            android:id="@+id/btn_sign_in_company"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/background_btn_intro2"
+            android:text="@string/cadastro_de_empresa"
+            android:textColor="#ffff"
+            android:textSize="19sp" />
 
         <Button
             android:id="@+id/btn_sign_out_user"
@@ -72,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:background="@drawable/background_btn_intro"
-            android:text="Sair da Sessão"
+            android:text="@string/sair_da_sess_o"
             android:textColor="#ffff"
             android:textSize="19sp" />
     </LinearLayout>

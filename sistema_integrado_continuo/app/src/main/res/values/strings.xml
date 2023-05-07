@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sistema integrado continuo</string>
     <string name="textview">Login</string>
-    <string name="labelCadastro">Cadastro</string>
+    <string name="labelCadastro">Cadastro de Cliente</string>
     <string name="welcome">Bem Vindo(a)!!</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
@@ -9,4 +9,16 @@
     <string name="btnCadastro">Cadastrar</string>
     <string name="btnTelaLogin">Cadastrar</string>
     <string name="title_activity_status">status</string>
+    <string name="cadastro_de_empresa">Cadastro de Empresa</string>
+    <string name="sair_da_sess_o">Sair da Sessão</string>
+    <string name="cadastro_de_cliente">Cadastro de Cliente</string>
+    <string name="login">Login</string>
+    <string name="seja_bem_vindo">Hi,</string>
+
+    <!-- Bottom Menu strings    -->
+    <string name="item_1">Home</string>
+    <string name="item_2">Chat</string>
+    <string name="item_3">Status OS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
