@@ -19,5 +19,4 @@
         android:icon="@drawable/outline_check_box_24"
         android:title="@string/item_3" />
 
-
 </menu>
