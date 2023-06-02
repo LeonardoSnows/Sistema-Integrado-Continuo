@@ -12,6 +12,7 @@ import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ChatFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.HomeFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ServiceOrderRegisterFragment
+import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.StatusFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -29,6 +30,7 @@ class MainMenu : AppCompatActivity() {
 
                 R.id.homePage -> replaceFragment(HomeFragment())
                 R.id.chatPage -> replaceFragment(ChatFragment())
+                R.id.statusPage -> replaceFragment(StatusFragment())
 
                 else -> {}
             }
