@@ -1,13 +1,16 @@
 package br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
-
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.runBlocking
+import br.com.fatec.projeto.sistemaintegradocontinuo.funcoes_uteis.requestViaCep
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -24,6 +27,11 @@ class HomeFragment : Fragment() {
 //            param2 = it.getString(ARG_PARAM2)
 //        }
 
+        // ------------ Teste das Funções ------------ //
+        // pegarDadosEmpresas("1")
+        // pegarOS("1")
+        // listarComentarios("1")
+        // criarEmpresa("super Tech", "super@gmail.com", "11.334.898/0001-50", "(61) 99749-4864", "18619-320", 152)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,4 +66,127 @@ class HomeFragment : Fragment() {
 //                }
 //            }
 //    }
+
+    // --------------------- Funções do Firebase ---------------------------- //
+    // Substituir os prints para os devidos campos na tela
+    // Retirar as Funções daqui para as telas a qual cada função é designada
+
+
+    private fun pegarDadosEmpresas(idEmpresa: String = ""){
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        if (idEmpresa != ""){
+            val refEmpresa = db.collection("Empresa").document(idEmpresa).get()
+            refEmpresa.addOnSuccessListener { result ->
+                if (result.exists()){
+                    // Não sei o porque o "for" não esta funcionando aqui
+                    println(result["nome_empresa"])
+                } else {
+                    println("Não encontrado")
+                }
+            }
+        } else {
+            db.collection("Empresa").get().addOnSuccessListener { result ->
+                for (document in result) {
+                    for (docu in document.data) {
+                        println("${docu.value}")
+                    }
+                    println("-----------------------")
+                }
+            }.addOnFailureListener { exception ->
+                println(exception)
+            }
+        }
+    }
+
+    private fun pegarOS(idEmpresa: String){
+        // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        val listaOS = db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get()
+
+        listaOS.addOnSuccessListener { result ->
+            for (os in result){
+                for (dado in os.data){
+                    println(dado)
+                }
+            }
+        }
+    }
+
+    private fun listarComentarios(idOS: String){
+        // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        db.collection("Ordem_servico").document("1")
+            .collection("comentarios").get()
+            .addOnSuccessListener { result ->
+                // Aqui irá retornar os comentarios, porém para visualizar os dados
+                // utilize o ".data"
+                // A saida vai seguir essa estrutura
+                // {mensagem=Já está pronto?, empresa=1, data_comentario=Timestamp(seconds=1684329979, nanoseconds=494000000)}
+                // Isso é valido para todas as outras funções
+                for (comentario in result){
+                    println(comentario.data)
+                }
+            }
+    }
+
+    private fun criarEmpresa(nome_empresa: String, email: String, cnpj: String, telefone: String, cep: String, numero: Int){
+        // pegando os dados do endereço pelo ViaCep
+        runBlocking {
+            val viaCepResponse = async(Dispatchers.IO) {
+                requestViaCep(cep)
+            }
+
+            val endereco = viaCepResponse.await()
+            if (endereco != null) {
+                val rua = endereco.logradouro
+                val bairro = endereco.bairro
+                val cidade = endereco.localidade
+                val estado = endereco.uf
+
+                if (email != null) {
+                    // Criar uma referência para o documento da empresa usando o email como ID
+                    val empresasRef = FirebaseFirestore.getInstance().collection("Empresa")
+                    val empresaDoc = empresasRef.document(email)
+
+                    // Verificar se o documento da empresa já existe
+                    empresaDoc.get()
+                        .addOnSuccessListener { documentSnapshot ->
+                            if (documentSnapshot.exists()) {
+                                // Retornar que o Email já está cadastrado
+                            } else {
+                                // O documento da empresa não existe, crie um novo documento
+                                val novaEmpresa = hashMapOf(
+                                    "nome_empresa" to nome_empresa,
+                                    "cnpj" to cnpj,
+                                    "telefone" to telefone,
+                                    "cep" to cep,
+                                    "numero" to numero,
+                                    "rua" to rua,
+                                    "bairro" to bairro,
+                                    "cidade" to cidade,
+                                    "estado" to estado,
+
+                                    )
+                                empresaDoc.set(novaEmpresa)
+                                    .addOnSuccessListener {
+                                        // A criação foi bem-sucedida
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        // Tratar erros durante a criação
+                                    }
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            // Tratar erros durante a verificação do documento
+                        }
+                    }
+
+            } else {
+                println("Não foi possível obter as informações do CEP.")
+            }
+        }
+    }
 }
