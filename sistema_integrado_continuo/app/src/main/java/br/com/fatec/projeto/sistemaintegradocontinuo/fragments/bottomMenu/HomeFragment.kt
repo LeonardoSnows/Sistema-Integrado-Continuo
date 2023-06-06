@@ -11,6 +11,8 @@ import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.runBlocking
 import br.com.fatec.projeto.sistemaintegradocontinuo.funcoes_uteis.requestViaCep
+import com.google.firebase.firestore.FieldValue
+import java.sql.Timestamp
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -28,10 +30,12 @@ class HomeFragment : Fragment() {
 //        }
 
         // ------------ Teste das Funções ------------ //
-        // pegarDadosEmpresas("1")
+        // pegarDadosEmpresas()
+        // criarOS("1", "Criando OS pelo celular", "Coisas de OS que preciso fazer")
+        criarComentarios("1", "1", "Segunda Mensagem")
         // pegarOS("1")
         // listarComentarios("1")
-        // criarEmpresa("super Tech", "super@gmail.com", "11.334.898/0001-50", "(61) 99749-4864", "18619-320", 152)
+        // criarEmpresa("Empresa Criada", "criada@gmail.com", "11.634.898/0001-50", "(61) 99249-4864", "64606-062", 152)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,7 +83,6 @@ class HomeFragment : Fragment() {
             val refEmpresa = db.collection("Empresa").document(idEmpresa).get()
             refEmpresa.addOnSuccessListener { result ->
                 if (result.exists()){
-                    // Não sei o porque o "for" não esta funcionando aqui
                     println(result["nome_empresa"])
                 } else {
                     println("Não encontrado")
@@ -156,6 +159,7 @@ class HomeFragment : Fragment() {
                         .addOnSuccessListener { documentSnapshot ->
                             if (documentSnapshot.exists()) {
                                 // Retornar que o Email já está cadastrado
+
                             } else {
                                 // O documento da empresa não existe, crie um novo documento
                                 val novaEmpresa = hashMapOf(
@@ -188,5 +192,39 @@ class HomeFragment : Fragment() {
                 println("Não foi possível obter as informações do CEP.")
             }
         }
+    }
+
+    private fun criarOS(idEmpresa: String, titulo: String, descricao: String){
+        val db = FirebaseFirestore.getInstance()
+
+        val novaOrdem = hashMapOf(
+            "empresa" to db.collection("Empresa").document(idEmpresa),
+            "data_solicitacao" to FieldValue.serverTimestamp(),
+            "status" to "pendente",
+            "titulo" to titulo,
+            "descricao" to descricao,
+        )
+
+        val nova_os = db.collection("Ordem_servico")
+        nova_os.add(novaOrdem).addOnSuccessListener { result ->
+            val id_nova_os = result.id
+            println("${id_nova_os}")
+        }
+    }
+
+    private fun criarComentarios(idEmpresa: String, idOS: String, mensagem: String){
+        val db = FirebaseFirestore.getInstance()
+
+        val novo_comentario = hashMapOf(
+            "empresa" to idEmpresa,
+            "data_comentario" to FieldValue.serverTimestamp(),
+            "mensagem" to mensagem
+        )
+
+        db.collection("Ordem_servico").document(idOS).collection("comentarios")
+            .add(novo_comentario)
+            .addOnSuccessListener { result ->
+                println(result.id)
+            }
     }
 }
