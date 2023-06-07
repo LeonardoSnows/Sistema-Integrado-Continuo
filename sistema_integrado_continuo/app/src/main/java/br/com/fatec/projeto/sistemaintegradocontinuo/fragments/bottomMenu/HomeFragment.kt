@@ -32,8 +32,8 @@ class HomeFragment : Fragment() {
         // ------------ Teste das Funções ------------ //
         // pegarDadosEmpresas()
         // criarOS("1", "Criando OS pelo celular", "Coisas de OS que preciso fazer")
-        criarComentarios("1", "1", "Segunda Mensagem")
-        // pegarOS("1")
+        //criarComentarios("1", "1", "Segunda Mensagem")
+        //pegarOS("1")
         // listarComentarios("1")
         // criarEmpresa("Empresa Criada", "criada@gmail.com", "11.634.898/0001-50", "(61) 99249-4864", "64606-062", 152)
     }
