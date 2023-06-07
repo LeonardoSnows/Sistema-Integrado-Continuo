@@ -1,5 +1,6 @@
 package br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu
 
+import android.content.Intent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import android.os.Bundle
@@ -7,7 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
+import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.runBlocking
 import br.com.fatec.projeto.sistemaintegradocontinuo.funcoes_uteis.requestViaCep
@@ -31,16 +34,16 @@ class HomeFragment : Fragment() {
 
         // ------------ Teste das Funções ------------ //
         // pegarDadosEmpresas()
-        // criarOS("1", "Criando OS pelo celular", "Coisas de OS que preciso fazer")
-        //criarComentarios("1", "1", "Segunda Mensagem")
-        //pegarOS("1")
+        criarOS("1", "Outra OS na sala", "este é um teste da nossa função")
+        // criarComentarios("1", "1", "Segunda Mensagem")
+        // pegarOS("1")
         // listarComentarios("1")
         // criarEmpresa("Empresa Criada", "criada@gmail.com", "11.634.898/0001-50", "(61) 99249-4864", "64606-062", 152)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val btnSignOut = view.findViewById<Button>(R.id.btn_sign_out_user) deste jeito que se coloca o findViewById
+        // val btnCriarOS = view.findViewById<Button>(R.id.btn_cadastro_os)
     }
 
     override fun onCreateView(
@@ -198,7 +201,7 @@ class HomeFragment : Fragment() {
         val db = FirebaseFirestore.getInstance()
 
         val novaOrdem = hashMapOf(
-            "empresa" to db.collection("Empresa").document(idEmpresa),
+            "empresa" to idEmpresa,
             "data_solicitacao" to FieldValue.serverTimestamp(),
             "status" to "pendente",
             "titulo" to titulo,
@@ -227,4 +230,6 @@ class HomeFragment : Fragment() {
                 println(result.id)
             }
     }
+
+
 }

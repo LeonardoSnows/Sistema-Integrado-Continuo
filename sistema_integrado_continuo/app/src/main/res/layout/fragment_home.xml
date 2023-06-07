@@ -22,7 +22,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btn_cadastro_user"
+        android:id="@+id/btn_cadastro_os"
         android:layout_width="403dp"
         android:layout_height="67dp"
         android:backgroundTint="#0E64D2"

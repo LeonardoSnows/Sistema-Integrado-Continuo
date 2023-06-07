@@ -30,7 +30,7 @@
             android:exported="false" />
         <activity android:name=".comentarios.ChatActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".mainMenu.MainMenu"
             android:exported="false" />
         <activity
             android:name=".cadastro.Cadastro_User"
@@ -39,7 +39,7 @@
             android:name=".formlogin.FormLogin"
             android:exported="false" />
         <activity
-            android:name=".mainMenu.MainMenu"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

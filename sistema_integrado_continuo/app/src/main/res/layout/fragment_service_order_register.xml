@@ -135,7 +135,7 @@
 
 
     <Button
-        android:id="@+id/btn_cadastro2_user"
+        android:id="@+id/btn_cadastrar_os"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#0E64D2"
