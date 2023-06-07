@@ -23,7 +23,7 @@ class MainMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(ServiceOrderRegisterFragment())
+        replaceFragment(HomeFragment())
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {

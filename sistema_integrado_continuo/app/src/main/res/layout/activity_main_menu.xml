@@ -51,8 +51,8 @@
 
     <FrameLayout
         android:id="@+id/frame_layout"
-        android:layout_width="359dp"
-        android:layout_height="554dp"
+        android:layout_width="402dp"
+        android:layout_height="622dp"
         android:layout_above="@id/bottom_navigation_View"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_View"
         app:layout_constraintEnd_toEndOf="parent"
