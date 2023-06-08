@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.MainActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import br.com.fatec.projeto.sistemaintegradocontinuo.cadastro.Cadastro_User
+import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.HomeFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.mainMenu.MainMenu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -23,7 +24,6 @@ class FormLogin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form_login)
-        OnStart()
 
         val btnEntrar = findViewById<Button>(R.id.boto_entrar)
         btnEntrar.setOnClickListener { view ->
@@ -117,18 +117,5 @@ class FormLogin : AppCompatActivity() {
             }
     }
 
-    private fun OnStart() {
-        super.onStart()
 
-        val usuarioAtual = FirebaseAuth.getInstance().currentUser
-        if (usuarioAtual != null) {
-            Toast.makeText(
-                this, " Usuario ja logado",
-                Toast.LENGTH_LONG
-            ).show()
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-    }
 }

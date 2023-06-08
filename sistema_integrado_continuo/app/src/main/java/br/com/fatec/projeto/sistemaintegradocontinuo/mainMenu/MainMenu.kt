@@ -32,7 +32,7 @@ class MainMenu : AppCompatActivity() {
                 R.id.homePage -> replaceFragment(HomeFragment())
                 R.id.chatPage -> replaceFragment(ChatFragment())
                 R.id.statusPage -> replaceFragment(StatusFragment())
-                R.id.criarOS -> replaceFragment(ServiceOrderEditFragment())
+                R.id.criarOS -> replaceFragment(ServiceOrderRegisterFragment())
 
                 else -> {}
             }
