@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_cadastro_empresa">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:src="@drawable/logo"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Editar Ordem de Serviço"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.107">
+
+        <!--Titulo da O.S-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.107">
+
+            <!--Endereço-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintVertical_bias="0.107">
+
+                <!--Endereço-->
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/address2_empresa_material_input"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            app:boxBackgroundColor="#f3f3f3">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/titulo_ordem_servicotext"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:hint="Título da Ordem de Serviço"
+                                android:inputType="text" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/address4_empresa_material_input"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            app:boxBackgroundColor="#f3f3f3">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/descricao_ordem_de_sercico_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="306dp"
+                                android:inputType="textMultiLine"
+                                android:maxLines="4"
+                                android:minLines="2"
+                                android:singleLine="false"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:typeface="normal"
+                                tools:text="Descrição Ordem de Serviço" />
+
+                            <Spinner
+                                android:id="@+id/statusSpinner"
+                                style="@android:style/Widget.Spinner.DropDown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTintMode="src_in"
+                                android:dropDownSelector="@color/white" />
+
+                            <Button
+                                android:id="@+id/btn_cadastrar_os"
+                                android:layout_width="match_parent"
+                                android:layout_height="62dp"
+                                android:backgroundTint="#0E64D2"
+                                android:fontFamily="@font/archivo"
+                                android:text="Salvar Alterações"
+                                android:textColor="@color/white" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--N°-->
+
+        <!--Endereço-->
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

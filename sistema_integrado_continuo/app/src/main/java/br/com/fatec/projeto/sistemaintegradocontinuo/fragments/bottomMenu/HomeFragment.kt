@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
 
         // ------------ Teste das Funções ------------ //
         // pegarDadosEmpresas()
-        criarOS("1", "Outra OS na sala", "este é um teste da nossa função")
+        //criarOS("1", "Outra OS na sala", "este é um teste da nossa função")
         // criarComentarios("1", "1", "Segunda Mensagem")
         // pegarOS("1")
         // listarComentarios("1")

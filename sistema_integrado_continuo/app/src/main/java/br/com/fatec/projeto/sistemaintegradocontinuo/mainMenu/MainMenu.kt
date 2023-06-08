@@ -11,6 +11,7 @@ import br.com.fatec.projeto.sistemaintegradocontinuo.databinding.ActivityMainMen
 import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ChatFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.HomeFragment
+import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ServiceOrderEditFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ServiceOrderRegisterFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.StatusFragment
 import com.google.android.material.snackbar.Snackbar
@@ -31,7 +32,7 @@ class MainMenu : AppCompatActivity() {
                 R.id.homePage -> replaceFragment(HomeFragment())
                 R.id.chatPage -> replaceFragment(ChatFragment())
                 R.id.statusPage -> replaceFragment(StatusFragment())
-                R.id.criarOS -> replaceFragment(ServiceOrderRegisterFragment())
+                R.id.criarOS -> replaceFragment(ServiceOrderEditFragment())
 
                 else -> {}
             }
