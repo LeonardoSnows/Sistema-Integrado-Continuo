@@ -1,229 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shape_app_categorias"
     tools:context=".status.status">
 
-
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <TextView
+        android:id="@+id/status_os"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="140sp"
-            android:orientation="vertical">
-
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/btn_cadastro_os"
-        android:layout_width="403dp"
-        android:layout_height="67dp"
-        android:backgroundTint="#0E64D2"
-        android:fontFamily="@font/archivo"
-        android:text="Cadastrar OS"
+        android:layout_height="wrap_content"
+        android:text="STATUS DA ORDEM DE SERVIÇO"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/cardCancelado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/scrollView2" />
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardCancelado"
-        android:layout_width="400dp"
-        android:layout_height="140dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardTotal"
-        tools:layout_editor_absoluteX="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="143dp"
-            android:orientation="vertical">
-
-            <!-- Media -->
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:contentDescription="Cancelada"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/background_cancelado" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="38sp"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-                <!-- Title, secondary and supporting text -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cancelada:"
-                    android:textAlignment="center"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardAndamento"
-        android:layout_width="400dp"
-        android:layout_height="140dp"
-        android:layout_margin="8dp"
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"/>
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/container_categorias"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingTop="15dp"
+        android:background="@drawable/shape_container_categorias"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" >
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Media -->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:contentDescription="Em andamento"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/background_em_andamento" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38sp"
-                android:orientation="horizontal"
-                android:padding="5dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/os_Pendentes"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    app:cardBackgroundColor="@color/cor_investimentos"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Os Pendentes: 10"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="20dp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:src="@drawable/pendente"/>
+                </androidx.cardview.widget.CardView>
 
-                <!-- Title, secondary and supporting text -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Em andamento:"
-                    android:textAlignment="center"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/os_em_andamento"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    app:cardBackgroundColor="@color/cor_noticias"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Os em andamento: 4"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="20dp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:src="@drawable/image_noticias_category"/>
+                </androidx.cardview.widget.CardView>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/Aguardando_aprovação"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    app:cardBackgroundColor="@color/cor_musicas"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Aguardando Aprovação
+                        do Cliente : 4"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="20dp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:src="@drawable/aguardando"/>
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/finalizadas"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    app:cardBackgroundColor="@color/cor_videos"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Os Finalizadas: 2"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="20dp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:src="@drawable/done"/>
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/canceladas"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    app:cardBackgroundColor="@color/red"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Os cancelada: 3"
+                        android:textColor="@color/white"
+                        android:textSize="22dp"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="20dp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:src="@drawable/cancelada"/>
+                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardConcluido"
-        android:layout_width="400dp"
-        android:layout_height="140dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardAndamento"
-        tools:layout_editor_absoluteX="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <!-- Media -->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:contentDescription="Concluida"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/background_concluido" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="38sp"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-                <!-- Title, secondary and supporting text -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Concluido:"
-                    android:textAlignment="center"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardTotal"
-        android:layout_width="400dp"
-        android:layout_height="140sp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardConcluido"
-        tools:layout_editor_absoluteX="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Media -->
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:contentDescription="Total"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/background_total" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="38sp"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-                <!-- Title, secondary and supporting text -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Total:"
-                    android:textAlignment="center"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

@@ -7,5 +7,12 @@
     <color name="teal_700">#134254</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#EF2316</color>
     <color name="base">#134254</color>
+    <color name="cor_top">#00DAD2</color>
+    <color name="cor_bottom">#002AFF</color>
+    <color name="cor_investimentos">#BFFF8C00</color>
+    <color name="cor_noticias">#BF8000FF</color>
+    <color name="cor_musicas">#F3D500</color>
+    <color name="cor_videos">#00DC84</color>
 </resources>
