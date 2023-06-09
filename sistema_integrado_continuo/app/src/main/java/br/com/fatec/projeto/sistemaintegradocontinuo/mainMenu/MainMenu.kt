@@ -4,8 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import br.com.fatec.projeto.sistemaintegradocontinuo.MainActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import br.com.fatec.projeto.sistemaintegradocontinuo.databinding.ActivityMainMenuBinding
 import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
@@ -25,6 +28,13 @@ class MainMenu : AppCompatActivity() {
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
+
+        val btnSair = findViewById<Button>(R.id.btnUserLogOut);
+
+        btnSair.setOnClickListener { view ->
+            FirebaseAuth.getInstance().signOut()
+            carregaTela(Intent(this, MainActivity::class.java))
+        }
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {

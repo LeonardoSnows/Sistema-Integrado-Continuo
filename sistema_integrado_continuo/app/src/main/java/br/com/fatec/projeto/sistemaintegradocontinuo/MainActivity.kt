@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btn_login)
         val btnSignIn = findViewById<Button>(R.id.btn_sign_in)
         val btnSignInCompany = findViewById<Button>(R.id.btn_sign_in_company)
-        val btnSignOut = findViewById<Button>(R.id.btn_sign_out_user)
 
 
         btnLogin.setOnClickListener {
@@ -37,19 +36,6 @@ class MainActivity : AppCompatActivity() {
 
         btnSignInCompany.setOnClickListener {
             carregaTela(Intent(this, Cadastro_Empresa::class.java))
-        }
-
-        btnSignOut.setOnClickListener { view ->
-            val usuarioAtual = FirebaseAuth.getInstance().currentUser
-            if (usuarioAtual != null) {
-                FirebaseAuth.getInstance().signOut()
-                carregaTela(Intent(this, FormLogin::class.java))
-            } else {
-                val snackbar =
-                    Snackbar.make(view, "Usuário não logado !!!", Snackbar.LENGTH_SHORT)
-                snackbar.setBackgroundTint(Color.RED)
-                snackbar.show()
-            }
         }
     }
 

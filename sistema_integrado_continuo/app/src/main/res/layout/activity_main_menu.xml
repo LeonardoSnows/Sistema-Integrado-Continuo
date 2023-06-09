@@ -38,6 +38,7 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/iconSair"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_alignParentEnd="true"
@@ -47,12 +48,24 @@
             android:layout_marginBottom="5sp"
             app:srcCompat="@drawable/protecao_do_usuario" />
 
+        <Button
+            android:id="@+id/btnUserLogOut"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="65dp"
+            android:textColor="@color/white"
+            android:text="Logout"
+            android:textSize="11sp"
+            app:icon="@drawable/sair"
+           />
+
     </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/frame_layout"
-        android:layout_width="402dp"
-        android:layout_height="600dp"
+        android:layout_width="396dp"
+        android:layout_height="616dp"
         android:layout_above="@id/bottom_navigation_View"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_View"
         app:layout_constraintEnd_toEndOf="parent"
