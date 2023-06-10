@@ -147,24 +147,6 @@
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_corporativo_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_corporativo_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email Corporativo"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/cep_input"
