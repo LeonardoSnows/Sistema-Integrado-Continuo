@@ -22,7 +22,7 @@
     <item
         android:id="@+id/criarOS"
         android:enabled="true"
-        android:icon="@drawable/outline_check_box_24"
+        android:icon="@drawable/add_os"
         android:title="Criar OS" />
 
 </menu>

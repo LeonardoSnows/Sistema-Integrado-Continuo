@@ -12,8 +12,9 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Comentários da OS"
+        android:layout_marginTop="12dp"
+        android:text="COMENTARIOS DA OS:
+        "
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
