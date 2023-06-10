@@ -45,16 +45,18 @@ class StatusFragment : Fragment() {
 
     data class OSItem(val title: String)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_status, container, false)
 
         etSearch = view.findViewById(R.id.etSearch)
 
-        var osItems : List<StatusFragment.OSItem> = listOf()
+        var osItems: List<StatusFragment.OSItem> = listOf()
 
-
-
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             osItems = pegarOS("1")
 
             recyclerView = view.findViewById(R.id.rvOrdens)
@@ -88,8 +90,6 @@ class StatusFragment : Fragment() {
     }
 
 
-
-
     private fun filterItens(itens: List<OSItem>, query: String): List<OSItem> {
         val filteredList = mutableListOf<OSItem>()
         for (iten in itens) {
@@ -100,11 +100,12 @@ class StatusFragment : Fragment() {
         return filteredList
     }
 
-    private suspend fun pegarOS(idEmpresa: String) : List<OSItem>{
+    private suspend fun pegarOS(idEmpresa: String): List<OSItem> {
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val osList = mutableListOf<OSItem>()
-        val listaOS = db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
+        val listaOS =
+            db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
 
 
         for (os in listaOS) {
@@ -118,7 +119,6 @@ class StatusFragment : Fragment() {
 
         return osList
     }
-
 
 
 }

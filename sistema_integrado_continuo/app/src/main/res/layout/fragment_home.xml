@@ -47,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/os_Pendentes"
                     android:layout_width="match_parent"
@@ -56,9 +57,10 @@
                     app:cardElevation="0dp"
                     >
                     <TextView
+                        android:id="@+id/textOsPendente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Os Pendentes: 10"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="22dp"
                         android:layout_gravity="center"
