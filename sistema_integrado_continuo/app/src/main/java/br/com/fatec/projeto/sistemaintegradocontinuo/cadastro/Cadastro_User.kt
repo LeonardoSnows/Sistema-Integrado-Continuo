@@ -53,7 +53,7 @@ class Cadastro_User : AppCompatActivity() {
             snackbar.show()
         } else {
             auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener { task ->
-                val value = if (task.isSuccessful) {
+                 if (task.isSuccessful) {
                     Toast.makeText(
                         this,
                         "Email $email foi registrado com Sucesso !!!",
@@ -65,8 +65,10 @@ class Cadastro_User : AppCompatActivity() {
                     Toast.makeText(
                         this, " Email invalido !!! !!!",
                         Toast.LENGTH_LONG
-                    ).show()
-                }
+                    ).show();
+                     val exception = task.exception;
+                     println("Erro ao cadastrar o usuário: ${exception?.message}")
+                 }
             }
         }
 
