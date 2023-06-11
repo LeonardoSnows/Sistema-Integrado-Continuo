@@ -86,9 +86,10 @@
                     app:cardElevation="0dp"
                     >
                     <TextView
+                        android:id="@+id/textOsAndamento"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Os em andamento: 4"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="22dp"
                         android:layout_gravity="center"
@@ -113,10 +114,10 @@
                     app:cardElevation="0dp"
                     >
                     <TextView
+                        android:id="@+id/textAprovClient"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Aguardando Aprovação
-                        do Cliente : 4"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="22dp"
                         android:layout_gravity="center"
@@ -142,9 +143,10 @@
                     app:cardElevation="0dp"
                     >
                     <TextView
+                        android:id="@+id/textFinalizadas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Os Finalizadas: 2"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="22dp"
                         android:layout_gravity="center"
@@ -170,9 +172,10 @@
                     app:cardElevation="0dp"
                     >
                     <TextView
+                        android:id="@+id/textCanceladas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Os cancelada: 3"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="22dp"
                         android:layout_gravity="center"

@@ -51,10 +51,19 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val txtOsPendete = view.findViewById<TextView>(R.id.textOsPendente)
-        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-        val listaOS = db.collection("Ordem_servico");
+        val txtOsEmAndamento = view.findViewById<TextView>(R.id.textOsAndamento)
+        val txtOsFinalizada = view.findViewById<TextView>(R.id.textFinalizadas)
+        val txtOsCancelada = view.findViewById<TextView>(R.id.textCanceladas)
+        val textAprovClient = view.findViewById<TextView>(R.id.textAprovClient)
 
-        definirContagemDadosFirebaseEmTextView(listaOS, txtOsPendete)
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+        val listaOS = db.collection("Ordem_servico")
+
+        definirContagemDadosFirebaseEmTextView(listaOS, txtOsPendete, "pendente")
+        definirContagemDadosFirebaseEmTextView(listaOS, txtOsEmAndamento, "Em Andamento")
+        definirContagemDadosFirebaseEmTextView(listaOS, textAprovClient, "Aguardando Aprovação")
+        definirContagemDadosFirebaseEmTextView(listaOS, txtOsFinalizada, "Finalizada")
+        definirContagemDadosFirebaseEmTextView(listaOS, txtOsCancelada, "Cancelada")
     }
 
     override fun onCreateView(
@@ -130,18 +139,23 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun os_Pendentes(referencia: CollectionReference, onComplete: (Long) -> Unit) {
-        // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
-        var qtdePendentes: Int = 0;
+    private fun Status_das_OS(
+        referencia: CollectionReference,
+        status: String,
+        onComplete: (Long) -> Unit
 
-        referencia.get().addOnSuccessListener { documents ->
-            val count = documents.size()
+    ) {
+
+        val statusOs = referencia.whereEqualTo("status", status).get()
+
+        statusOs.addOnSuccessListener { result ->
+            val count = result.size()
             onComplete(count.toLong())
         }.addOnFailureListener { exception ->
-            onComplete(-1) // Sinalizar erro com valor negativo
+            onComplete(-1)
         }
-
     }
+
 
     private fun listarComentarios(idOS: String) {
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
@@ -256,16 +270,21 @@ class HomeFragment : Fragment() {
     }
 
     fun definirContagemDadosFirebaseEmTextView(
-        collectionReference: CollectionReference,
-        textView: TextView
+        collectionReference: CollectionReference, textView: TextView, status: String
     ) {
-        os_Pendentes(collectionReference) { count ->
+        Status_das_OS(collectionReference, status) { count ->
             if (count >= 0) {
-                val texto = "Pendentes: $count"
-                textView.setText(texto)
+                if (status == "Aguardando Aprovação") {
+                    val texto = "Aprov. Cliente: $count"
+                    textView.text = texto
+                } else {
+                    val texto = "$status: $count"
+                    textView.text = texto
+                }
+
             } else {
                 val erro = "Erro ao recuperar dados do Firestore"
-                textView.setText(erro)
+                textView.text = erro
             }
         }
     }
