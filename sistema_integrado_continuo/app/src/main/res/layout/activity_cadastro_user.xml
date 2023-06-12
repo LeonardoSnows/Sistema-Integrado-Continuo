@@ -13,255 +13,200 @@
         android:layout_height="wrap_content">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="394dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="48dp"
-        android:src="@drawable/register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mobile_login_pana" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/labelCadastro"
-        android:textColor="@color/white"
-        android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.233">
-
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_cadastro_material_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_cadastro_material_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/senha_cadastro_material_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:endIconMode="password_toggle"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/senha_cadastro_material_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nome_empresa_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nome_empresa_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nome da Empresa"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cnpj_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cnpj_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="CNPJ"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/telefone_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/telefone_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Telefone Corporativo"
-                android:inputType="phone" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cep_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cep_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="CEP"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/numero_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/numero_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Número"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/endereco_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/endereco_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Endereço"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/bairro_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/bairro_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Bairro"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cidade_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#f3f3f3"
-            app:helperText="Requerido *"
-            app:helperTextTextColor="#FF1200"
-            app:startIconDrawable="@drawable/password_safe">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cidade_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Cidade"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btn_cadastro_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
-            android:backgroundTint="#0E64D2"
-            android:fontFamily="@font/archivo"
-            android:text="@string/btnCadastro"
-            app:cornerRadius="15dp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="394dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mobile_login_pana" />
 
         <TextView
-            android:id="@+id/txtTelaLogin"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/labelCadastro"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Já possui um cadastro? Clique aqui"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF" />
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.233">
 
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_cadastro_material_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="#f3f3f3"
+                app:helperText="Requerido *"
+                app:helperTextTextColor="#FF1200"
+                app:startIconDrawable="@drawable/password_safe">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_cadastro_material_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/senha_cadastro_material_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="#f3f3f3"
+                app:endIconMode="password_toggle"
+                app:helperText="Requerido *"
+                app:helperTextTextColor="#FF1200"
+                app:startIconDrawable="@drawable/password_safe">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/senha_cadastro_material_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nome_empresa_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="#f3f3f3"
+                app:helperText="Requerido *"
+                app:helperTextTextColor="#FF1200"
+                app:startIconDrawable="@drawable/password_safe">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nome_empresa_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome da Empresa"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cnpj_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="#f3f3f3"
+                app:helperText="Requerido *"
+                app:helperTextTextColor="#FF1200"
+                app:startIconDrawable="@drawable/password_safe">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cnpj_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CNPJ (somente números)"
+                    android:inputType="text"
+                    android:maxLength="14" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/telefone_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="#f3f3f3"
+                app:helperText="Requerido *"
+                app:helperTextTextColor="#FF1200"
+                app:startIconDrawable="@drawable/password_safe">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/telefone_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Telefone (somente números)"
+                    android:inputType="phone"
+                    android:maxLength="11" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cep_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="#f3f3f3"
+                app:helperText="Requerido *"
+                app:helperTextTextColor="#FF1200"
+                app:startIconDrawable="@drawable/password_safe">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cep_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CEP (somente números)"
+                    android:inputType="number"
+                    android:maxLength="8" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/numero_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="#f3f3f3"
+                app:helperText="Requerido *"
+                app:helperTextTextColor="#FF1200"
+                app:startIconDrawable="@drawable/password_safe">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/numero_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Número"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btn_cadastro_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:backgroundTint="#0E64D2"
+                android:fontFamily="@font/archivo"
+                android:text="@string/btnCadastro"
+                app:cornerRadius="15dp" />
+
+            <TextView
+                android:id="@+id/txtTelaLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Já possui um cadastro? Clique aqui"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
