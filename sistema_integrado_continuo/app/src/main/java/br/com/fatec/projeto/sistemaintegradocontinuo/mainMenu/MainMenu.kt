@@ -13,6 +13,7 @@ import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import br.com.fatec.projeto.sistemaintegradocontinuo.databinding.ActivityMainMenuBinding
 import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ChatFragment
+import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.HomeEmpresaFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.HomeFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ServiceOrderEditFragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ServiceOrderRegisterFragment
@@ -40,7 +41,7 @@ class MainMenu : AppCompatActivity() {
             when (it.itemId) {
 
                 R.id.homePage -> replaceFragment(HomeFragment())
-                R.id.chatPage -> replaceFragment(ChatFragment())
+                R.id.chatPage -> replaceFragment(HomeEmpresaFragment())
                 R.id.statusPage -> replaceFragment(StatusFragment())
                 R.id.criarOS -> replaceFragment(ServiceOrderRegisterFragment())
 
