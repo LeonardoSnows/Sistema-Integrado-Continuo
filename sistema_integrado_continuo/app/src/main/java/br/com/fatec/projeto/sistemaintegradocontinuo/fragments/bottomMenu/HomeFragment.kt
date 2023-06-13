@@ -160,7 +160,6 @@ class HomeFragment : Fragment() {
     private fun listarComentarios(idOS: String) {
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-
         db.collection("Ordem_servico").document("1").collection("comentarios").get()
             .addOnSuccessListener { result ->
                 // Aqui irá retornar os comentarios, porém para visualizar os dados

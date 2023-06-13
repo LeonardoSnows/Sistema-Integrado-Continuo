@@ -3,32 +3,32 @@ package br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu
 
 import OSAdapter
 import android.app.Dialog
-import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.PopupWindow
+import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.Toast
-import androidx.compose.ui.graphics.Color
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class StatusFragment : Fragment() {
+class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var osAdapter: OSAdapter
@@ -36,24 +36,8 @@ class StatusFragment : Fragment() {
     private lateinit var etSearch: EditText
     private lateinit var btnSearch: ImageButton
     private lateinit var btnFilter: ImageButton
-    private var osTitulo: MutableList<String> = mutableListOf()
     private var filteredList: MutableList<OsItem> = mutableListOf()
-
     private var isSearchingByName = true
-
-//    private lateinit var allOS: List<OSItem>
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.fragment_status)
-//
-//        val recyclerView: RecyclerView = findViewById(R.id.rvOrdens)
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//
-//        val items = listOf("Item 1", "Item 2", "Item 3") // Replace with your data
-//        val adapter = OSAdapter(items)
-//        recyclerView.adapter = adapter
-//    }
 
     data class OsItem(val id: String, val details: Map<String, Any>)
 
@@ -73,23 +57,12 @@ class StatusFragment : Fragment() {
         lifecycleScope.launch {
             osItems = pegarOS("1")
 
-//            val selectedKey = "titulo"
-//            var desiredItem : Any? = ""
-//            osTitulo = mutableListOf()
-//
-//            for ((outerKey, innerMap) in osItems) {
-//                for ((innerKey, value) in innerMap) {
-//                    if (innerKey == selectedKey) {
-//                        desiredItem = innerMap[innerKey]
-//                        osTitulo.add(desiredItem as String)
-//                    }
-//                }
-//            }
-
             filteredList.addAll(osItems)
+
 
             recyclerView = view.findViewById(R.id.rvOrdens)
             osAdapter = OSAdapter(filteredList)
+            osAdapter.itemClickListener = this@StatusFragment
             recyclerView.adapter = osAdapter
             recyclerView.layoutManager = LinearLayoutManager(activity)
 
@@ -114,30 +87,8 @@ class StatusFragment : Fragment() {
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, statusOptions)
         sSearch.adapter = spinnerAdapter
 
-//        etSearch.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//                // Not needed
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                // Filter the data based on the search query
-//                val query = s.toString().trim()
-//                val filteredItens = filterItens(osItems, query)
-//
-//                // Update the RecyclerView adapter with the filtered data
-//                osAdapter = OSAdapter(osItems)
-//                recyclerView.adapter = osAdapter
-//            }
-//
-//            override fun afterTextChanged(s: Editable?) {
-//                // Not needed
-//            }
-//        })
-
-
         return view
     }
-
 
     private fun toggleSearchOption() {
         isSearchingByName = !isSearchingByName
@@ -152,54 +103,68 @@ class StatusFragment : Fragment() {
         }
     }
 
-//    private fun performSearch() {
-//        val query = if (isSearchingByName) {
-//            etSearch.text.toString().trim()
-//        } else {
-//            sSearch.selectedItem.toString()
-//        }
-//
-////        val query = etSearch.text.toString().trim()
-//
-//        filteredList.clear()
-//        if (query.isEmpty()) {
-//            filteredList.addAll(osTitulo)
-//        } else {
-//            filteredList.addAll(osTitulo.filter { it.contains(query, true) })
-//        }
-//
-//        osAdapter.notifyDataSetChanged()
-//    }
+    private suspend fun pegarOS(idEmpresa: String) : List<OsItem> {
 
-
-//    private fun filterItens(itens: List<OSItem>, query: String): List<OSItem> {
-//        val filteredList = mutableListOf<OSItem>()
-//        for (iten in itens) {
-//            if (iten.title.contains(query, true)) {
-//                filteredList.add(iten)
-//            }
-//        }
-//        return filteredList
-//    }
-
-    private suspend fun pegarOS(idEmpresa: String): List<OsItem> {
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-//        val osList = mutableListOf<Any>()
         var osDados = mutableListOf<OsItem>()
-        val listaOS =
-            db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
-        var number = 0
-        val string = "OS"
+        val listaOS = db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
         var id = ""
 
         listaOS.forEach { os ->
             val osMap: MutableMap<String, Any> = os.data
-            id = string + number
-            val item = OsItem(id, osMap)
+            id = os.id
+            val item = OsItem(id,osMap)
             osDados.add(item)
-            number++
         }
         return osDados
     }
+
+    override fun onOSItemClicked(osItem: OsItem) {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.popup_layout)
+
+        val osTitle = dialog.findViewById<TextView>(R.id.osTitle)
+        val osStatus = dialog.findViewById<TextView>(R.id.osStatus)
+        val osDesc = dialog.findViewById<TextView>(R.id.osDesc)
+        val osDate = dialog.findViewById<TextView>(R.id.osDate)
+
+        osTitle.text = osItem.details["titulo"] as CharSequence?
+        osStatus.text = osItem.details["status"] as CharSequence?
+        osDesc.text = osItem.details["descricao"] as CharSequence?
+        val timestamp = osItem.details["data_solicitacao"] as com.google.firebase.Timestamp
+        val date = timestamp.toDate()
+        val readableDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date)
+
+        osDate.text = readableDate
+
+        val osId = osItem.id as String
+
+        val closeButton = dialog.findViewById<ImageView>(R.id.closeButton)
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        val commentsButton = dialog.findViewById<Button>(R.id.commentsButton)
+        commentsButton.setOnClickListener {
+            val fragment = ChatFragment()
+
+
+            val bundle = Bundle()
+            bundle.putString("idOS", osId)
+            fragment.arguments = bundle
+
+
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.frame_layout, fragment)
+                .commit()
+
+            dialog.dismiss()
+
+        }
+
+        dialog.show()
+    }
+
+
 }
