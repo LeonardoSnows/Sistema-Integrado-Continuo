@@ -28,7 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.launch
 
-class StatusFragment : Fragment(){
+class StatusFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var osAdapter: OSAdapter
@@ -36,7 +36,7 @@ class StatusFragment : Fragment(){
     private lateinit var etSearch: EditText
     private lateinit var btnSearch: ImageButton
     private lateinit var btnFilter: ImageButton
-    private var osTitulo : MutableList<String> = mutableListOf()
+    private var osTitulo: MutableList<String> = mutableListOf()
     private var filteredList: MutableList<OsItem> = mutableListOf()
 
     private var isSearchingByName = true
@@ -68,7 +68,7 @@ class StatusFragment : Fragment(){
         btnSearch = view.findViewById(R.id.btnSearch)
         btnFilter = view.findViewById(R.id.btnFilter)
 
-        var osItems : List<OsItem> = listOf()
+        var osItems: List<OsItem> = listOf()
 
         lifecycleScope.launch {
             osItems = pegarOS("1")
@@ -104,12 +104,14 @@ class StatusFragment : Fragment(){
                 } else {
                     sSearch.selectedItem.toString()
                 }
-                osAdapter.performSearch(query,isSearchingByName)
+                osAdapter.performSearch(query, isSearchingByName)
             }
         }
 
-        val statusOptions = listOf("Pendente", "Em Andamento", "Aguardando Aprovação", "Finalizada", "Cancelada")
-        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, statusOptions)
+        val statusOptions =
+            listOf("Pendente", "Em Andamento", "Aguardando Aprovação", "Finalizada", "Cancelada")
+        val spinnerAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, statusOptions)
         sSearch.adapter = spinnerAdapter
 
 //        etSearch.addTextChangedListener(object : TextWatcher {
@@ -180,12 +182,13 @@ class StatusFragment : Fragment(){
 //        return filteredList
 //    }
 
-    private suspend fun pegarOS(idEmpresa: String) : List<OsItem> {
+    private suspend fun pegarOS(idEmpresa: String): List<OsItem> {
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 //        val osList = mutableListOf<Any>()
         var osDados = mutableListOf<OsItem>()
-        val listaOS = db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
+        val listaOS =
+            db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
         var number = 0
         val string = "OS"
         var id = ""
@@ -193,7 +196,7 @@ class StatusFragment : Fragment(){
         listaOS.forEach { os ->
             val osMap: MutableMap<String, Any> = os.data
             id = string + number
-            val item = OsItem(id,osMap)
+            val item = OsItem(id, osMap)
             osDados.add(item)
             number++
         }

@@ -12,12 +12,7 @@ import br.com.fatec.projeto.sistemaintegradocontinuo.MainActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import br.com.fatec.projeto.sistemaintegradocontinuo.databinding.ActivityMainMenuBinding
 import br.com.fatec.projeto.sistemaintegradocontinuo.formlogin.FormLogin
-import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ChatFragment
-import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.HomeEmpresaFragment
-import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.HomeFragment
-import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ServiceOrderEditFragment
-import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.ServiceOrderRegisterFragment
-import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.StatusFragment
+import br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu.*
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -28,7 +23,7 @@ class MainMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(HomeFragment())
+        replaceFragment(ListarClientesFragment())
 
         val btnSair = findViewById<Button>(R.id.btnUserLogOut);
 

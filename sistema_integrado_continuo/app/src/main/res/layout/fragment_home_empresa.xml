@@ -65,12 +65,12 @@
             app:cardElevation="0dp">
 
             <TextView
-                android:id="@+id/totalclientestext"
+                android:id="@+id/totalClientesText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="20dp"
-                android:text="Clientes Cadastrados: 25"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
