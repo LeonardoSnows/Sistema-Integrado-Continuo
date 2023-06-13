@@ -81,4 +81,5 @@ dependencies {
     androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    implementation 'com.google.firebase:firebase-database:19.7.0'
 }

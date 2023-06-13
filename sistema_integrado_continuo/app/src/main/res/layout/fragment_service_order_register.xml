@@ -101,7 +101,7 @@
                             app:boxBackgroundColor="#f3f3f3">
 
                             <Button
-                                android:id="@+id/btn_cadastrar_os"
+                                android:id="@+id/btn_salvar_alteracoes"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="#0E64D2"

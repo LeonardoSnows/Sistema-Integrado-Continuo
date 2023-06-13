@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_app_categorias"
-    tools:context=".status.status">
+    tools:context=".status.status"
+    android:id="@+id/home_page">
 
     <TextView
         android:id="@+id/status_os"

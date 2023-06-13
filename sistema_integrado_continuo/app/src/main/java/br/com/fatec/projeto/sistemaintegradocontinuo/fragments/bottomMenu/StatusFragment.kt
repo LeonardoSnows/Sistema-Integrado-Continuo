@@ -163,6 +163,22 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
 
         }
 
+        val btnEditButton = dialog.findViewById<Button>(R.id.editButton)
+        btnEditButton.setOnClickListener {
+            val fragment = ServiceOrderEditFragment()
+
+            val bundle = Bundle()
+            bundle.putString("idOS", osId)
+            fragment.arguments = bundle
+
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.frame_layout, fragment)
+                .commit()
+
+            dialog.dismiss()
+
+        }
+
         dialog.show()
     }
 

@@ -123,7 +123,7 @@
                                 android:dropDownSelector="@color/white" />
 
                             <Button
-                                android:id="@+id/btn_cadastrar_os"
+                                android:id="@+id/btn_salvar_alteracoes"
                                 android:layout_width="match_parent"
                                 android:layout_height="62dp"
                                 android:backgroundTint="#0E64D2"
