@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -34,8 +35,10 @@ class ServiceOrderRegisterFragment : Fragment() {
 
             val titulo = view.findViewById<TextInputEditText>(R.id.titulo_ordem_servicotext).text.toString().trim();
             val descricao = view.findViewById<TextInputEditText>(R.id.descricao_ordem_de_sercico_text).text.toString().trim();
+            val firebaseAuth = FirebaseAuth.getInstance()
+            val userId = firebaseAuth.currentUser?.email.toString()
 
-            criarOS("1", titulo, descricao)
+            criarOS(userId, titulo, descricao)
             tituloOrdemServicoText.setText("")
             descricaoOrdemDeServicoText.setText("")
 
