@@ -119,13 +119,13 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
     private suspend fun pegarOS(idEmpresa: String): List<OsItem> {
 
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
-
-
-
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         var osDados = mutableListOf<OsItem>()
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
         var listaOS: QuerySnapshot? = null
 
         if (idEmpresa == "") {

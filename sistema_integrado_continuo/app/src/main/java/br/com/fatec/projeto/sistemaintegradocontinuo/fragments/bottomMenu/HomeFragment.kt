@@ -12,8 +12,10 @@ import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.runBlocking
 import br.com.fatec.projeto.sistemaintegradocontinuo.funcoes_uteis.requestViaCep
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
+import kotlinx.coroutines.tasks.await
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -56,14 +58,35 @@ class HomeFragment : Fragment() {
         val txtOsCancelada = view.findViewById<TextView>(R.id.textCanceladas)
         val textAprovClient = view.findViewById<TextView>(R.id.textAprovClient)
 
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val userEmail = firebaseAuth.currentUser?.email
+
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val listaOS = db.collection("Ordem_servico")
 
-        definirContagemDadosFirebaseEmTextView(listaOS, txtOsPendete, "pendente")
-        definirContagemDadosFirebaseEmTextView(listaOS, txtOsEmAndamento, "Em Andamento")
-        definirContagemDadosFirebaseEmTextView(listaOS, textAprovClient, "Aguardando Aprovação")
-        definirContagemDadosFirebaseEmTextView(listaOS, txtOsFinalizada, "Finalizada")
-        definirContagemDadosFirebaseEmTextView(listaOS, txtOsCancelada, "Cancelada")
+        if (userEmail != null) {
+            definirContagemDadosFirebaseEmTextView(listaOS, txtOsPendete, "pendente", userEmail)
+            definirContagemDadosFirebaseEmTextView(
+                listaOS,
+                txtOsEmAndamento,
+                "Em Andamento",
+                userEmail
+            )
+            definirContagemDadosFirebaseEmTextView(
+                listaOS,
+                textAprovClient,
+                "Aguardando Aprovação",
+                userEmail
+            )
+            definirContagemDadosFirebaseEmTextView(
+                listaOS,
+                txtOsFinalizada,
+                "Finalizada",
+                userEmail
+            )
+            definirContagemDadosFirebaseEmTextView(listaOS, txtOsCancelada, "Cancelada", userEmail)
+        }
+
     }
 
     override fun onCreateView(
@@ -142,11 +165,12 @@ class HomeFragment : Fragment() {
     private fun Status_das_OS(
         referencia: CollectionReference,
         status: String,
+        user: String,
         onComplete: (Long) -> Unit
 
     ) {
 
-        val statusOs = referencia.whereEqualTo("status", status).get()
+        val statusOs = referencia.whereEqualTo("empresa", user).whereEqualTo("status",status).get()
 
         statusOs.addOnSuccessListener { result ->
             val count = result.size()
@@ -269,9 +293,9 @@ class HomeFragment : Fragment() {
     }
 
     fun definirContagemDadosFirebaseEmTextView(
-        collectionReference: CollectionReference, textView: TextView, status: String
+        collectionReference: CollectionReference, textView: TextView, status: String, user: String
     ) {
-        Status_das_OS(collectionReference, status) { count ->
+        Status_das_OS(collectionReference, status, user) { count ->
             if (count >= 0) {
                 if (status == "Aguardando Aprovação") {
                     val texto = "Aprov. Cliente: $count"

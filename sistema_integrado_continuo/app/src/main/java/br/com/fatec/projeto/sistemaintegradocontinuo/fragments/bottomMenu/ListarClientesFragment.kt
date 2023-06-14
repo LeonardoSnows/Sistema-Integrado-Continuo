@@ -33,8 +33,6 @@ class ListarClientesFragment : Fragment() {
 
         val btnItem = item.findViewById<Button>(R.id.verOrdensButton)
 
-
-
         recyclerView = view.findViewById(R.id.recyclerViewClientes)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 

@@ -30,7 +30,6 @@ class HomeEmpresaFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    data class OsItemCliente(val id: String, val details: Map<String, Any>)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
