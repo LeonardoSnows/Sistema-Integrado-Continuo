@@ -121,11 +121,7 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         var osDados = mutableListOf<OsItem>()
-<<<<<<< Updated upstream
 
-
-=======
->>>>>>> Stashed changes
         var listaOS: QuerySnapshot? = null
 
         if (idEmpresa == "") {
@@ -190,20 +186,26 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
 
         }
 
+        val email = FirebaseAuth.getInstance().currentUser?.email
+
+
         val btnEditButton = dialog.findViewById<Button>(R.id.editButton)
-        btnEditButton.setOnClickListener {
-            val fragment = ServiceOrderEditFragment()
 
-            val bundle = Bundle()
-            bundle.putString("idOS", osId)
-            fragment.arguments = bundle
+        if (email == "admin@admin.com") {
+            btnEditButton.setOnClickListener {
+                val fragment = ServiceOrderEditFragment()
 
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.frame_layout, fragment)
-                .commit()
+                val bundle = Bundle()
+                bundle.putString("idOS", osId)
+                fragment.arguments = bundle
 
-            dialog.dismiss()
-
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.frame_layout, fragment)
+                    .commit()
+                dialog.dismiss()
+            }
+        } else {
+            btnEditButton.visibility = View.GONE
         }
 
         dialog.show()
