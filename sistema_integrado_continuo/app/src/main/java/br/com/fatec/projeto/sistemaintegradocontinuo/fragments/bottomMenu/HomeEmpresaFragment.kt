@@ -1,5 +1,6 @@
 package br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +29,7 @@ class HomeEmpresaFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    data class OsItemCliente(val id: String, val details: Map<String, Any>)
 
     data class OsItemCliente(val id: String, val details: Map<String, Any>)
 

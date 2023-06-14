@@ -124,6 +124,7 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
 
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         var osDados = mutableListOf<OsItem>()
+<<<<<<< Updated upstream
 
 
         var listaOS: QuerySnapshot? = null
@@ -135,6 +136,10 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
         }
 
 
+=======
+        val listaOS =
+            db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
+>>>>>>> Stashed changes
         var id = ""
 
         listaOS.forEach { os ->
