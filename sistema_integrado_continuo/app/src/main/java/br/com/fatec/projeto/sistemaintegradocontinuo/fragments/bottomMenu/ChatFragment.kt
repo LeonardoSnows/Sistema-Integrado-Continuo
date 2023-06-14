@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
@@ -41,6 +42,9 @@ class ChatFragment : Fragment() {
         val idOS = arguments?.getString("idOS")
 
         lifecycleScope.launch {
+
+            val firebaseAuth = FirebaseAuth.getInstance()
+            val userEmail = firebaseAuth.currentUser?.email
             osComms = listarComentarios(idOS.toString())
 
             recyclerView = view.findViewById(R.id.recyclerView)
@@ -48,15 +52,18 @@ class ChatFragment : Fragment() {
             recyclerView.adapter = commentsAdapter
             recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        }
-        btnSend.setOnClickListener {
-            if (etComment.text.toString().trim() != null && etComment.text.toString().trim() != ""){
-                commentsAdapter.criarComentarios("1",idOS.toString(),etComment.text.toString().trim())
-                etComment.setText("")
-            } else {
-                Toast.makeText(context, "Campo vazio, digite um comentário", Toast.LENGTH_SHORT).show()
+            btnSend.setOnClickListener {
+                if (etComment.text.toString().trim() != null && etComment.text.toString().trim() != ""){
+                    commentsAdapter.criarComentarios(userEmail.toString(),idOS.toString(),etComment.text.toString().trim())
+                    etComment.setText("")
+                } else {
+                    Toast.makeText(context, "Campo vazio, digite um comentário", Toast.LENGTH_SHORT).show()
+                }
+
             }
+
         }
+
 
         return view
     }
@@ -68,7 +75,6 @@ class ChatFragment : Fragment() {
         var osDados = mutableListOf<OsComments>()
         val listaOsComments = db.collection("Ordem_servico").document(idOS).collection("comentarios").get().await()
         var id = ""
-
 
         listaOsComments.forEach { osComm ->
             val osMap: MutableMap<String, Any> = osComm.data

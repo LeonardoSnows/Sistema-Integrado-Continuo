@@ -12,7 +12,7 @@ import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class CommentsAdapter(private val commentsList: List<ChatFragment.OsComments>) : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
+class CommentsAdapter(private var commentsList: List<ChatFragment.OsComments>) : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
 
     private var filteredList: List<ChatFragment.OsComments> = commentsList
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {

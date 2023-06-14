@@ -149,10 +149,12 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
         val osStatus = dialog.findViewById<TextView>(R.id.osStatus)
         val osDesc = dialog.findViewById<TextView>(R.id.osDesc)
         val osDate = dialog.findViewById<TextView>(R.id.osDate)
+        val osCompany = dialog.findViewById<TextView>(R.id.osCompany)
 
-        osTitle.text = osItem.details["titulo"] as CharSequence?
-        osStatus.text = osItem.details["status"] as CharSequence?
-        osDesc.text = osItem.details["descricao"] as CharSequence?
+        osCompany.text = osItem.details["empresa"] as String
+        osTitle.text = osItem.details["titulo"] as String
+        osStatus.text = osItem.details["status"] as String
+        osDesc.text = osItem.details["descricao"] as String
         val timestamp = osItem.details["data_solicitacao"] as com.google.firebase.Timestamp
         val date = timestamp.toDate()
         val readableDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date)
