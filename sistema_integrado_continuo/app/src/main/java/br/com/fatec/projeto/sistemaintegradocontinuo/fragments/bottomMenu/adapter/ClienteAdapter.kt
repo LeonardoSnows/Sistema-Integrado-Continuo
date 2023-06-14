@@ -26,6 +26,7 @@ class ClienteAdapter(var itemList: List<DocumentSnapshot>) :
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         private val textViewItem: TextView = itemView.findViewById(R.id.nomeClienteTextView)
 
         fun bind(item: DocumentSnapshot) {

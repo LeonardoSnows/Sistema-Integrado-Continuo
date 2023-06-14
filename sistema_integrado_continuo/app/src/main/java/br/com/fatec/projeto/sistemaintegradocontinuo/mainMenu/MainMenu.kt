@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import br.com.fatec.projeto.sistemaintegradocontinuo.MainActivity
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import br.com.fatec.projeto.sistemaintegradocontinuo.databinding.ActivityMainMenuBinding
@@ -32,11 +33,23 @@ class MainMenu : AppCompatActivity() {
             carregaTela(Intent(this, MainActivity::class.java))
         }
 
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val isAdmin = currentUser?.email == "admin@admin.com"
+
+        if (isAdmin) {
+            binding.bottomNavigationView.menu.findItem(R.id.qtdeUsers).isVisible = true
+        } else {
+            binding.bottomNavigationView.menu.findItem(R.id.qtdeUsers).isVisible = false
+        }
+
+        binding.bottomNavigationView.menu.findItem(R.id.qtdeUsers).isVisible = isAdmin
+
         binding.bottomNavigationView.setOnItemSelectedListener {
+
             when (it.itemId) {
 
                 R.id.homePage -> replaceFragment(HomeFragment())
-                R.id.chatPage -> replaceFragment(HomeEmpresaFragment())
+                R.id.qtdeUsers -> replaceFragment(HomeEmpresaFragment())
                 R.id.statusPage -> replaceFragment(StatusFragment())
                 R.id.criarOS -> replaceFragment(ServiceOrderRegisterFragment())
 

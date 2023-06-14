@@ -7,28 +7,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
-import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
-import java.util.Locale
+import java.util.*
+
 
 class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
 
@@ -40,6 +34,8 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
     private lateinit var btnFilter: ImageButton
     private var filteredList: MutableList<OsItem> = mutableListOf()
     private var isSearchingByName = true
+
+
 
     data class OsItem(val id: String, val details: Map<String, Any>)
 
@@ -54,6 +50,7 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
         btnSearch = view.findViewById(R.id.btnSearch)
         btnFilter = view.findViewById(R.id.btnFilter)
 
+
         var osItems: List<OsItem> = listOf()
 
         lifecycleScope.launch {
@@ -61,9 +58,13 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
             val firebaseAuth = FirebaseAuth.getInstance()
             val userEmail = firebaseAuth.currentUser?.email
 
+
             if (userEmail == "admin@admin.com") {
                 osItems = pegarOS("")
+
             } else if (userEmail != null) {
+
+
                 osItems = pegarOS(userEmail)
             } else {
                 // Tratar o caso em que o usuário não está logado ou o e-mail está indisponível
@@ -115,14 +116,17 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
         }
     }
 
-    private suspend fun pegarOS(idEmpresa: String) : List<OsItem> {
+    private suspend fun pegarOS(idEmpresa: String): List<OsItem> {
 
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
+
+
+
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         var osDados = mutableListOf<OsItem>()
 
-        var listaOS: QuerySnapshot? = null
 
+        var listaOS: QuerySnapshot? = null
 
         if (idEmpresa == "") {
             listaOS = db.collection("Ordem_servico").get().await()
@@ -130,12 +134,13 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
             listaOS = db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
         }
 
+
         var id = ""
 
         listaOS.forEach { os ->
             val osMap: MutableMap<String, Any> = os.data
             id = os.id
-            val item = OsItem(id,osMap)
+            val item = OsItem(id, osMap)
             osDados.add(item)
         }
         return osDados

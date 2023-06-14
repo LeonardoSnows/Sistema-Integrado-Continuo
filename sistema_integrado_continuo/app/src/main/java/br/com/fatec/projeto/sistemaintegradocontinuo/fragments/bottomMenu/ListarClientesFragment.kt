@@ -1,9 +1,11 @@
 package br.com.fatec.projeto.sistemaintegradocontinuo.fragments.bottomMenu
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +29,11 @@ class ListarClientesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_listar_clientes, container, false)
+        val item = inflater.inflate(R.layout.item_cliente, container, false)
+
+        val btnItem = item.findViewById<Button>(R.id.verOrdensButton)
+
+
 
         recyclerView = view.findViewById(R.id.recyclerViewClientes)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

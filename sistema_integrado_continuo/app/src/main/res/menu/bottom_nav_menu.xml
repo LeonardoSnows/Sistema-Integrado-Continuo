@@ -8,16 +8,16 @@
         android:title="@string/item_1" />
 
     <item
-        android:id="@+id/chatPage"
-        android:enabled="true"
-        android:icon="@drawable/baseline_chat_24"
-        android:title="@string/item_2" />
-
-    <item
         android:id="@+id/statusPage"
         android:enabled="true"
         android:icon="@drawable/outline_check_box_24"
         android:title="@string/item_3" />
+
+    <item
+        android:id="@+id/qtdeUsers"
+        android:enabled="true"
+        android:icon="@drawable/outline_check_box_24"
+        android:title="qtdeUsers" />
 
     <item
         android:id="@+id/criarOS"
