@@ -29,7 +29,6 @@ class HomeEmpresaFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    data class OsItemCliente(val id: String, val details: Map<String, Any>)
 
     data class OsItemCliente(val id: String, val details: Map<String, Any>)
 

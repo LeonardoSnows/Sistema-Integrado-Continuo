@@ -49,10 +49,7 @@ class MainMenu : AppCompatActivity() {
             when (it.itemId) {
 
                 R.id.homePage -> replaceFragment(HomeFragment())
-<<<<<<< Updated upstream
                 R.id.qtdeUsers -> replaceFragment(HomeEmpresaFragment())
-=======
->>>>>>> Stashed changes
                 R.id.statusPage -> replaceFragment(StatusFragment())
                 R.id.criarOS -> replaceFragment(ServiceOrderRegisterFragment())
 
