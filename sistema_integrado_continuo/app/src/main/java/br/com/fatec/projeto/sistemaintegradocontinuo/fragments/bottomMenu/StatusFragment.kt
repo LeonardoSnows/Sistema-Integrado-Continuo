@@ -21,7 +21,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fatec.projeto.sistemaintegradocontinuo.R
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.launch
@@ -55,7 +57,17 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
         var osItems: List<OsItem> = listOf()
 
         lifecycleScope.launch {
-            osItems = pegarOS("1")
+
+            val firebaseAuth = FirebaseAuth.getInstance()
+            val userEmail = firebaseAuth.currentUser?.email
+
+            if (userEmail == "admin@admin.com") {
+                osItems = pegarOS("")
+            } else if (userEmail != null) {
+                osItems = pegarOS(userEmail)
+            } else {
+                // Tratar o caso em que o usuário não está logado ou o e-mail está indisponível
+            }
 
             filteredList.addAll(osItems)
 
@@ -108,7 +120,16 @@ class StatusFragment : Fragment(), OSAdapter.OSItemClickListener {
         // Pegando a instancia do Firestore e as OSs referente a empresa que foi passada
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         var osDados = mutableListOf<OsItem>()
-        val listaOS = db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
+
+        var listaOS: QuerySnapshot? = null
+
+
+        if (idEmpresa == "") {
+            listaOS = db.collection("Ordem_servico").get().await()
+        } else {
+            listaOS = db.collection("Ordem_servico").whereEqualTo("empresa", idEmpresa).get().await()
+        }
+
         var id = ""
 
         listaOS.forEach { os ->
